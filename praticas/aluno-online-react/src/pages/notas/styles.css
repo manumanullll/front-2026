@@ -1,0 +1,3 @@
+.notas-table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+.notas-table th, td { padding: 12px; border: 1px solid #ddd; text-align: center; }
+.notas-table th { background-color: #f8f9fa; }
