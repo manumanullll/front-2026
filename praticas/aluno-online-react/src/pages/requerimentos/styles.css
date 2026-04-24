@@ -1,0 +1,3 @@
+.req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+.req-btn { padding: 20px; border: 2px dashed #ccc; background: white; border-radius: 8px; cursor: pointer; }
+.req-btn:hover { border-color: #4f46e5; color: #4f46e5; }
