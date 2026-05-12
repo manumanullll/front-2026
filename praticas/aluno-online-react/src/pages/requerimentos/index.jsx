@@ -1,14 +1,31 @@
-import './styles.css';
+import PageHeader from "../../components/PageHeader";
+import Card from "../../components/Card";
 
 export default function Requerimentos() {
   return (
-    <div className="page-container">
-      <h1>Secretaria Virtual</h1>
-      <p>Solicite documentos e declarações.</p>
-      <div className="req-grid">
-        <button className="req-btn">Declaração de Matrícula</button>
-        <button className="req-btn">Histórico Escolar</button>
+    <>
+      <PageHeader 
+        title="Secretaria Virtual" 
+        description="Solicite documentos e declarações de forma rápida." 
+      />
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <Card>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontWeight: 'bold' }}>Declaração de Matrícula</p>
+            <button style={{ backgroundColor: '#2563eb', color: 'white', border: 'none', padding: '8px 15px', borderRadius: '5px', cursor: 'pointer' }}>
+              Solicitar
+            </button>
+          </div>
+        </Card>
+        <Card>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontWeight: 'bold' }}>Histórico Escolar</p>
+            <button style={{ backgroundColor: '#2563eb', color: 'white', border: 'none', padding: '8px 15px', borderRadius: '5px', cursor: 'pointer' }}>
+              Solicitar
+            </button>
+          </div>
+        </Card>
       </div>
-    </div>
+    </>
   );
 }
