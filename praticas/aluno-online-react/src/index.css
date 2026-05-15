@@ -1,0 +1,12 @@
+:root {
+  --bg-cinza: #e0e0e0;
+  --bg-claro: #f5f5f5;
+  --borda: #ccc;
+  --texto: #333;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: var(--texto);
+}

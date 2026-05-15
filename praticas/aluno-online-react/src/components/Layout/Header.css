@@ -1,0 +1,13 @@
+.main-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 30px;
+  background: #fff;
+}
+
+.profile-icon {
+  font-size: 2rem;
+  cursor: pointer;
+}

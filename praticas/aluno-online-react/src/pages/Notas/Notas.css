@@ -1,0 +1,19 @@
+/* Mantenha apenas o que é específico da página, como a tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+th,
+td {
+  border: 1px solid #eee;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+  color: #666;
+  font-size: 0.9rem;
+}
