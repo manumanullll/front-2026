@@ -5,12 +5,13 @@ import Faltas from './pages/Faltas/Faltas';
 import Notas from './pages/Notas/Notas';
 import Boletos from './pages/Boletos/Boletos';
 import Requerimentos from './pages/Requerimentos/Requerimentos';
+import Login from './pages/Login/index';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-
+        <Route path="/login" element={<Login />} />
         <Route index element={<Dashboard />} />
         <Route path="faltas" element={<Faltas />} />
         <Route path="notas" element={<Notas />} />
