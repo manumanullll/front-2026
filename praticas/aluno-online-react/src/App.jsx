@@ -5,7 +5,7 @@ import Faltas from './pages/Faltas/Faltas';
 import Notas from './pages/Notas/Notas';
 import Boletos from './pages/Boletos/Boletos';
 import Requerimentos from './pages/Requerimentos/Requerimentos';
-import Login from './pages/Login/index';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
