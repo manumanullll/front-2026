@@ -6,26 +6,41 @@ import Faltas from './pages/Faltas/Faltas';
 import Notas from './pages/Notas/Notas';
 import Boletos from './pages/Boletos/Boletos';
 import Requerimentos from './pages/Requerimentos/Requerimentos';
-import RequerimentoForm from './forms/RequerimentoForm/RequerimentoForm'; 
 import Login from './pages/Login/Login';
+import RequerimentoForm from './forms/RequerimentoForm';
 
-function App() {
+function PrivateRoute({ children }) {
   const { autenticado } = useAuth();
 
+  return autenticado ? children : <Navigate to="/login" replace />;
+}
+
+function App() {
   return (
     <Routes>
-      <Route path="/login" element={!autenticado ? <Login /> : <Navigate to="/" />} />
+      <Route path="/login" element={<Login />} />
 
-      <Route path="/" element={autenticado ? <Layout /> : <Navigate to="/login" />}>
+      <Route 
+        path="/" 
+        element={
+          <PrivateRoute>
+            <Layout />
+          </PrivateRoute>
+        }
+      >
         <Route index element={<Dashboard />} />
         <Route path="faltas" element={<Faltas />} />
         <Route path="notas" element={<Notas />} />
         <Route path="boletos" element={<Boletos />} />
-        <Route path="requerimentos" element={<Requerimentos />} />
-        <Route path="requerimentos/novo" element={<RequerimentoForm />} />
+
+        <Route path="requerimentos">
+          <Route index element={<Requerimentos />} />
+          <Route path="novo" element={<RequerimentoForm />} />
+        </Route>
+
       </Route>
 
-      <Route path="*" element={<Navigate to={autenticado ? "/" : "/login"} />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
