@@ -8,7 +8,7 @@ function Header() {
     return (
         <header className="main-header">
             <div className="profile-container" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                {usuario && <span style={{ fontWeight: '500' }}>Olá, {usuario.nome}</span>}
+                {usuario && <span style={{ fontWeight: '500' }}>Olá, Manuela </span>}
                 <div className="profile-icon">👤</div>
             </div>
         </header>
