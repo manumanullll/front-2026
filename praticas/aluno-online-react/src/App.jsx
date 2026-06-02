@@ -15,6 +15,12 @@ function PrivateRoute({ children }) {
   return autenticado ? children : <Navigate to="/login" replace />;
 }
 
+function PrivateRoute({ children }) {
+  const { autenticado } = useAuth();
+
+  return autenticado ? children : <Navigate to="/login" replace />;
+}
+
 function App() {
   return (
     <Routes>
@@ -22,6 +28,8 @@ function App() {
 
       <Route 
         path="/" 
+      <Route
+        path="/"
         element={
           <PrivateRoute>
             <Layout />
