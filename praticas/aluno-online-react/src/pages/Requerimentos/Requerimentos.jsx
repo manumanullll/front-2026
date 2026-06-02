@@ -1,11 +1,18 @@
 import "./Requerimentos.css";
+import { useNavigate} from 'react-router-dom';
 
 function Requerimentos() {
+  const navigate = useNavigate();
   return (
     <>
       <h1>Meus Requerimentos</h1>
       <h3>Faça solicitações online para a secretaria</h3>
-
+      
+      <div style={{ margin: '20px 0'}}>
+          <buton onClick={() => navigate('novo')}>
+            ➕ Novo Requerimento
+          </buton>
+      </div>
       <section className="table-container">
         <table>
           <thead>

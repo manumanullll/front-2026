@@ -41,7 +41,7 @@ export default function Login() {
 
     if (isValid) {
       console.log('Validação passou! Autenticando usuário...');
-      login({ nome: 'Kayã Kalki', email: email });
+      login({ nome: 'Manuela', email: email });
       navigate('/');
     }
   };

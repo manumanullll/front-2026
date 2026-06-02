@@ -7,6 +7,13 @@ import Notas from './pages/Notas/Notas';
 import Boletos from './pages/Boletos/Boletos';
 import Requerimentos from './pages/Requerimentos/Requerimentos';
 import Login from './pages/Login/Login';
+import RequerimentoForm from './forms/RequerimentoForm';
+
+function PrivateRoute({ children }) {
+  const { autenticado } = useAuth();
+
+  return autenticado ? children : <Navigate to="/login" replace />;
+}
 
 function PrivateRoute({ children }) {
   const { autenticado } = useAuth();
@@ -19,6 +26,8 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
 
+      <Route 
+        path="/" 
       <Route
         path="/"
         element={
@@ -31,7 +40,12 @@ function App() {
         <Route path="faltas" element={<Faltas />} />
         <Route path="notas" element={<Notas />} />
         <Route path="boletos" element={<Boletos />} />
-        <Route path="requerimentos" element={<Requerimentos />} />
+
+        <Route path="requerimentos">
+          <Route index element={<Requerimentos />} />
+          <Route path="novo" element={<RequerimentoForm />} />
+        </Route>
+
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
