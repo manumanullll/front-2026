@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 import './Sidebar.css';
 
 function Sidebar() {
     const navLinkClass = ({ isActive }) => (isActive ? 'active' : '');
+
+    const { logout } = useAuth();
 
     return (
         <>
@@ -43,7 +46,9 @@ function Sidebar() {
                                 Requerimentos
                             </NavLink>
                         </li>
-                        <li className="logout">Sair</li>
+                        <li className="logout" onClick={logout} style={{ cursor: 'pointer' }}>
+                            Sair
+                        </li>
                     </ul>
                 </nav>
             </aside>
