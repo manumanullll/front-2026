@@ -1,13 +1,21 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { cadastrarRequerimento } from "../services/requerimentoService";
 
 const RequerimentoForm = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmit = (data) => {
-        console.log("Dados do Requerimento:", data);
-        alert("Requerimento enviado com sucesso!");
-        reset();
+
+    const onSubmit = async (data) => {
+        try {
+            await cadastrarRequerimento(data);
+            alert("Requerimento enviado com sucesso!");
+            reset();
+            navigate('/requerimentos');
+        } catch (error) {
+            console.error("Erro ao salvar:", error);
+            alert("Falha ao salvar o requerimento. Tente novamente.");
+        }
     };
 
     return (
@@ -48,7 +56,7 @@ const RequerimentoForm = () => {
                 </div>
 
                 <div style={{ display: 'flex', gap: '10px' }}>
-                    <button type="button" onClick={() => reset()}>Cancelar</button>
+                    <button type="button" onClick={() => navigate('/requerimentos')}>Cancelar</button>
                     <button type="submit">Salvar</button>
                 </div>
             </form>

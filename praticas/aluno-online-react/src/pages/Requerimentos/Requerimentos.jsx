@@ -1,17 +1,35 @@
 import "./Requerimentos.css";
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { listarRequerimentos } from '../../services/requerimentoService';
+
 
 function Requerimentos() {
+
   const navigate = useNavigate();
+  const [lista, setLista] = useState([]);
+
+  useEffect(() => {
+    const carregarRequerimentos = async () => {
+      try {
+        const dados = await listarRequerimentos();
+        setLista(dados);
+      } catch (error) {
+        console.error("Erro ao carregar os requerimentos:", error);
+      }
+    };
+    carregarRequerimentos();
+  }, []);
+
   return (
     <>
       <h1>Meus Requerimentos</h1>
       <h3>Faça solicitações online para a secretaria</h3>
-      
-      <div style={{ margin: '20px 0'}}>
-          <buton onClick={() => navigate('novo')}>
-            ➕ Novo Requerimento
-          </buton>
+
+      <div style={{ margin: '20px 0' }}>
+        <button onClick={() => navigate('novo')}>
+          ➕ Novo Requerimento
+        </button>
       </div>
       <section className="table-container">
         <table>
@@ -23,31 +41,13 @@ function Requerimentos() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Revisão de Menção</td>
-              <td>15/12/2025</td>
-              <td>Indeferido</td>
-            </tr>
-            <tr>
-              <td>Dispensa de Disciplina</td>
-              <td>12/06/2025</td>
-              <td>Indeferido</td>
-            </tr>
-            <tr>
-              <td>Trancamento de Matrícula</td>
-              <td>05/01/2024</td>
-              <td>Deferido</td>
-            </tr>
-            <tr>
-              <td>Mudança de Turno</td>
-              <td>10/10/2023</td>
-              <td>Deferido</td>
-            </tr>
-            <tr>
-              <td>Renovação de Matrícula</td>
-              <td>20/02/2023</td>
-              <td>Deferido</td>
-            </tr>
+            {lista.map((req) => (
+              <tr key={req.id}>
+                <td>{req.tipo}</td>
+                <td>{req.data}</td>
+                <td>{req.situacao}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </section>

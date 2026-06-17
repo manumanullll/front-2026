@@ -15,19 +15,11 @@ function PrivateRoute({ children }) {
   return autenticado ? children : <Navigate to="/login" replace />;
 }
 
-function PrivateRoute({ children }) {
-  const { autenticado } = useAuth();
-
-  return autenticado ? children : <Navigate to="/login" replace />;
-}
-
 function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
 
-      <Route 
-        path="/" 
       <Route
         path="/"
         element={
