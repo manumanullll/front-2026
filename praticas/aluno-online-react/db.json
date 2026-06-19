@@ -14,5 +14,14 @@
             "data": "2026-06-01",
             "situacao": "Deferido"
         }
-    ]
+    ],
+    "usuarios": [
+        {
+            "id": "1",
+            "nome": "Aluno Teste",
+            "email": "aluno@email.com",
+            "senha": "123"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
 }
