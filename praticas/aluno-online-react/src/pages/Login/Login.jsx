@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { login as realizarLoginAPI } from '../../services/authService';
 import Input from '../../components/ui/Input';
 import logo from '../../assets/learn.svg';
 import './Login.css';
 
 export default function Login() {
-  const { login } = useAuth();
+  const { login: logarNoContexto } = useAuth();
   const navigate = useNavigate();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     let isValid = true;
@@ -40,9 +40,16 @@ export default function Login() {
     }
 
     if (isValid) {
-      console.log('Validação passou! Autenticando usuário...');
-      login({ nome: 'Manuela', email: email });
-      navigate('/');
+      try {
+        console.log('Validação passou! Autenticando na API...');
+
+        const dadosAutenticados = await realizarLoginAPI(email, password);
+        logarNoContexto(dadosAutenticados.usuario);
+        navigate('/');
+
+      } catch (error) {
+        setEmailError(error.message || 'Erro ao tentar realizar o login.');
+      }
     }
   };
 
